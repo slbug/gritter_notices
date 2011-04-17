@@ -44,11 +44,11 @@ module GritterNotices::ViewHelpers
       next unless message_array
       message_array = [message_array] unless message_array.is_a? Array
       message_array.flatten.each { |message|
-        key = key.to_sym
+        key = message[0].to_sym
         # Превращаем системные флешки в гритеровские
         gritter_key = GRITTER_CONVERT_KEYS[key] || GRITTER_CONVERT_KEYS[:other] || key
         title = titles[gritter_key] || key.to_s
-        gritters << add_gritter(message, :image => gritter_key, :title => title)
+        gritters << add_gritter(message[1], :image => gritter_key, :title => title)
       }
     end
 
