@@ -40,7 +40,7 @@ module GritterNotices::ViewHelpers
   end
 
   def add_flashes_to_gritters(gritters, list, titles)
-    list.each_pair do |key, message_array|
+    list.each_with_index do |message_array, key|
       next unless message_array
       message_array = [message_array] unless message_array.is_a? Array
       message_array.flatten.each { |message|
